@@ -3,10 +3,8 @@
 # 🎮 XCLOUD GOD MODE AI
 ### *El Mega-Script Definitivo para Xbox Cloud Gaming (xCloud) & Xbox Remote Play (XRemote)*
 
-[![Version](https://img.shields.io/badge/Versi%C3%B3n-39.0.0--Ultimate-107C10?style=for-the-badge&logo=xbox&logoColor=white)](https://github.com/JMBLEO/XCLOUD-GOD-MODE-AI)
-[![License](https://img.shields.io/badge/Licencia-MIT-blue?style=for-the-badge)](https://github.com/JMBLEO/XCLOUD-GOD-MODE-AI/blob/main/LICENSE)
+[![Version](https://img.shields.io/badge/Versi%C3%B3n-1.1.0--Ultimate-107C10?style=for-the-badge&logo=xbox&logoColor=white)](https://github.com/JMBLEO/XCLOUD-GOD-MODE-AI)
 [![Platform](https://img.shields.io/badge/Plataforma-Web%20%7C%20PC%20%7C%20M%C3%B3vil%20%7C%20SmartTV-0078D4?style=for-the-badge&logo=windows11&logoColor=white)](https://www.xbox.com/play)
-[![Tampermonkey](https://img.shields.io/badge/Soporte-Tampermonkey%20%7C%20Violentmonkey-00485B?style=for-the-badge)](https://www.tampermonkey.net/)
 
 <p align="center">
   <b>Desbloqueo real de 1440p / 4K / 8K • Shaders GPU IA en Tiempo Real (0ms Latencia) • Emulación Háptica DualSense 5</b>
@@ -111,7 +109,7 @@ Hemos separado estrictamente el **Teclado** y el **Ratón** e incorporado el int
 
 1. Instala una extensión gestora de scripts en tu navegador (recomendamos **[Tampermonkey](https://www.tampermonkey.net/)** o **[Violentmonkey](https://violentmonkey.github.io/)** en Chrome, Edge, Brave o Firefox).
 2. Haz clic en el icono de la extensión y selecciona **"Crear un nuevo script..."** (*Create a new script*).
-3. Borra todo el contenido por defecto, copia el código íntegro del script desde este repositorio ([`xcloud-god-mode-ai.user.js`](https://github.com/JMBLEO/XCLOUD-GOD-MODE-AI)) y pégalo.
+3. Borra todo el contenido por defecto, copia el código íntegro del script desde este repositorio ([`xcloud-god-mode-ai.user.js`](https://github.com/JMBLEO/XCLOUD-GOD-MODE-AI/releases)) y pégalo.
 4. Presiona **`Ctrl + S`** (o *Archivo > Guardar*).
 5. Entra a **[xbox.com/play](https://www.xbox.com/play)**. Verás el nuevo botón **⚙️ MJS 🌐 1440p** en la barra superior derecha y el engranaje flotante magnético **⚙️** en el borde izquierdo de tu pantalla.
 
