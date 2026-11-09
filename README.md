@@ -3,7 +3,7 @@
 # 🎮 XCLOUD GOD MODE AI
 ### *El Mega-Script Definitivo para Xbox Cloud Gaming (xCloud) & Xbox Remote Play (XRemote)*
 
-[![Version](https://img.shields.io/badge/Versi%C3%B3n-1.1.0--Ultimate-107C10?style=for-the-badge&logo=xbox&logoColor=white)](https://github.com/JMBLEO/XCLOUD-GOD-MODE-AI)
+[![Version](https://img.shields.io/badge/Versi%C3%B3n-1.2.0--Ultimate-107C10?style=for-the-badge&logo=xbox&logoColor=white)](https://github.com/JMBLEO/XCLOUD-GOD-MODE-AI)
 [![Platform](https://img.shields.io/badge/Plataforma-Web%20%7C%20PC%20%7C%20M%C3%B3vil%20%7C%20SmartTV-0078D4?style=for-the-badge&logo=windows11&logoColor=white)](https://www.xbox.com/play)
 
 <p align="center">
@@ -50,7 +50,12 @@ Diseñado bajo una arquitectura **"Zero Black-Screen"** (Cero Pantallas Negras),
 
 ---
 
-## 🚀 Características Principales (v1.1)
+## 🚀 Características Principales (v1.2)
+
+### 0. 🌍 Desbloqueo regional y control de la ruta de streaming
+* Reescribe localmente la respuesta de experimentación para corregir `territory`/`market` y sincroniza la cookie `territory`.
+* Permite fijar el centro de streaming, añadir el IP de región a las solicitudes de sesión y activar el filtrado IPv4 de candidatos ICE.
+* Incluye una píldora QoS compacta con pérdida de paquetes, RTT, bitrate, resolución y cuadros descartados; no envía datos fuera del navegador.
 
 ### 1. 🖥️ Desbloqueo Nativo 1440p (QHD), 4K (UHD) y 8K (Full UHD)
 * **Inyección Directa en la Interfaz de Xbox (`StreamResolutionSelector`):** Modifica el selector oficial de resolución de Xbox Cloud Gaming agregando botones funcionales para **1440p (12 GB/h)**, **4K (20 GB/h)** y **8K (35 GB/h)**.
