@@ -7,6 +7,8 @@ Userscript integral para Xbox Cloud Gaming y Xbox Remote Play con compatibilidad
 - Compatibilidad con `play.xbox.com` y rutas SPA.
 - HUD de red y rendimiento con RTT, FPS, bitrate, resolucion, paquetes y cuadros perdidos.
 - Resolucion 1440p, 4K y 8K.
+- Catalogo extendido de ubicaciones regionales y datacenters de Azure con nombres descriptivos.
+- Perfil 1440p QHD con modo de alta calidad y bitrate ampliado.
 - Shaders de nitidez y estabilizacion de color.
 - Server/region, calidad, codigo de video y perfilaos de entrada.
 - Controles de Xbox, PlayStation y Nintendo.

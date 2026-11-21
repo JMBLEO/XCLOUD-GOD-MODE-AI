@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         XCloud God Mode AI
 // @namespace    https://github.com/JMBLEO/XCLOUD-GOD-MODE-AI
-// @version      2.0.1
+// @version      2.0.2
 // @description  Script maestro: compatibilidad play.xbox.com, HUD inmune a reescalado, Auto-Detox post-juego, 1440p/4K/8K, Shaders IA, controles avanzados y estadisticas
 // @author       JMBLEO
 // @license      MIT
@@ -1852,15 +1852,98 @@
     }
 
     // ==========================================
-    // 9. XCU: DESBLOQUEO REGIONAL, RUTA, IPv4 Y QoS
+    // 9. XCU: DESBLOQUEO REGIONAL, RUTA, CALIDAD Y QoS
     // ==========================================
     if (!window.__XCU_GM__) {
-        window.__XCU_GM__ = { version: '3.2.0', errors: [], captures: 0 };
+        window.__XCU_GM__ = { version: '2.0.2', errors: [], captures: 0 };
         const xcu = window.__XCU_GM__;
         const XCU_KEYS = { region: 'xcu.region', server: 'xcu.streamRegion', resolution: 'xcu.resolution' };
-        const REGIONS = { jp: ['138.199.21.239', 'JP', 'Japón'], us: ['143.244.47.65', 'US', 'Estados Unidos'], kr: ['121.125.60.151', 'KR', 'Corea del Sur'], pl: ['45.134.212.66', 'PL', 'Polonia'], br: ['169.150.198.66', 'BR', 'Brasil'], off: ['', '', 'Desactivado'] };
-        const SERVERS = { auto: ['', 'Automático'], ejp: ['JAPANEAST', 'Tokio'], ckr: ['KOREACENTRAL', 'Seúl'], eus: ['EASTUS', 'Este de EE.UU.'], weu: ['WESTEUROPE', 'Europa Occidental'] };
-        const RES = { auto: ['', 'Automático'], r1080: ['windows', '1080p'], r720: ['android', '720p'] };
+        const REGION_ENTRIES = [
+            ['🇦🇺 [MS Azure] Australia East (New South Wales)', '20.53.111.128', 'AU'],
+            ['🇦🇺 [MS Azure] Australia South East (Victoria)', '20.193.18.128', 'AU'],
+            ['🇧🇷 [MS Azure] Brazil South (São Paulo State)', '169.150.198.66', 'BR'],
+            ['🇨🇦 [MS Azure] Canada Central (Toronto)', '20.48.224.128', 'CA'],
+            ['🇨🇦 [MS Azure] Canada East (Quebec City)', '52.229.123.128', 'CA'],
+            ['🇨🇱 [MS Azure] Chile Central (Santiago - Quilicura)', '20.143.92.1', 'CL'],
+            ['🇨🇱 [GCP] Google Cloud Chile (Santiago Node)', '34.176.0.1', 'CL'],
+            ['🇨🇱 [AWS] Amazon Web Services Chile (Santiago Edge)', '15.228.0.1', 'CL'],
+            ['🇨🇱 [Cloudflare] Chile Edge Node (Santiago)', '104.18.0.1', 'CL'],
+            ['🇨🇱 [ISP] Entel Chile (Fibra Nacional)', '200.83.128.1', 'CL'],
+            ['🇨🇱 [ISP] VTR / Claro Chile', '190.160.0.1', 'CL'],
+            ['🇨🇱 [ISP] GTD Manquehue (Santiago)', '200.72.0.1', 'CL'],
+            ['🇨🇱 [ISP] Movistar / Telefónica Chile', '200.75.0.1', 'CL'],
+            ['🇨🇱 [ISP] Wom Chile', '181.42.0.1', 'CL'],
+            ['🇦🇷 [MS Azure] Argentina - Mendoza / Cuyo', '190.221.180.1', 'AR'],
+            ['🇦🇷 [GCP] Google Cloud Argentina (Buenos Aires)', '34.175.0.1', 'AR'],
+            ['🇦🇷 [ISP] Movistar Argentina', '181.114.212.34', 'AR'],
+            ['🇦🇷 [ISP] Claro Argentina', '190.111.246.128', 'AR'],
+            ['🇦🇷 [ISP] Telecentro', '190.221.32.1', 'AR'],
+            ['🇦🇷 [ISP] Arsat', '200.51.240.1', 'AR'],
+            ['🇧🇷 [GCP] Google Cloud Brasil (São Paulo)', '34.151.0.1', 'BR'],
+            ['🇧🇷 [AWS] Amazon Web Services Brasil (São Paulo)', '18.228.0.1', 'BR'],
+            ['🇧🇷 [ISP] Claro BR (São Paulo)', '177.54.148.163', 'BR'],
+            ['🇧🇷 [ISP] Vivo BR (São Paulo)', '177.10.128.1', 'BR'],
+            ['🇨🇴 [MS Azure] Colombia (Bogotá Edge)', '186.80.12.1', 'CO'],
+            ['🇫🇷 [MS Azure] France Central (Paris)', '20.190.155.128', 'FR'],
+            ['🇫🇷 [MS Azure] France South (Marseille)', '40.66.57.128', 'FR'],
+            ['🇩🇪 [MS Azure] Germany North (Bremen)', '51.116.146.128', 'DE'],
+            ['🇩🇪 [MS Azure] Germany West Central (Frankfurt)', '51.116.57.128', 'DE'],
+            ['🇮🇳 [MS Azure] Central India (Pune)', '20.192.115.128', 'IN'],
+            ['🇮🇳 [MS Azure] South India (Chennai)', '20.192.203.128', 'IN'],
+            ['🇯🇵 [MS Azure] Japan East (Tokyo)', '210.131.113.123', 'JP'],
+            ['🇯🇵 [MS Azure] Japan West (Osaka)', '20.43.149.128', 'JP'],
+            ['🇯🇵 Japón 2 (Tokyo)', '138.199.21.239', 'JP'],
+            ['🇰🇷 [MS Azure] Korea Central (Seoul)', '168.126.63.1', 'KR'],
+            ['🇰🇷 [MS Azure] Korea South (Busan)', '20.194.240.128', 'KR'],
+            ['🇰🇷 Corea 2 (Seoul)', '121.125.60.151', 'KR'],
+            ['🇰🇷 Corea 3 (Seoul)', '211.234.110.151', 'KR'],
+            ['🇲🇽 [MS Azure] Mexico Central (Querétaro)', '20.195.68.1', 'MX'],
+            ['🇳🇱 [MS Azure] West Europe (North Holland)', '20.31.25.128', 'NL'],
+            ['🇳🇴 [MS Azure] Norway East (Oslo)', '51.120.219.128', 'NO'],
+            ['🇳🇴 [MS Azure] Norway West (Stavanger)', '51.120.106.128', 'NO'],
+            ['🇵🇱 [MS Azure] Poland Central (Warsaw)', '45.134.212.66', 'PL'],
+            ['🇿🇦 [MS Azure] South Africa North (Johannesburg)', '102.133.155.128', 'ZA'],
+            ['🇿🇦 [MS Azure] South Africa West (Cape Town)', '102.133.242.128', 'ZA'],
+            ['🇸🇪 [MS Azure] Sweden Central (Gävle)', '51.12.213.128', 'SE'],
+            ['🇨🇭 [MS Azure] Switzerland North (Zurich)', '51.107.57.128', 'CH'],
+            ['🇨🇭 [MS Azure] Switzerland West (Geneva)', '51.107.169.128', 'CH'],
+            ['🇦🇪 [MS Azure] UAE Central (Abu Dhabi)', '20.195.111.128', 'AE'],
+            ['🇦🇪 [MS Azure] UAE North (Dubai)', '20.195.148.128', 'AE'],
+            ['🇬🇧 [MS Azure] UK South (London)', '20.33.26.128', 'GB'],
+            ['🇬🇧 [MS Azure] UK West (Cardiff)', '51.140.231.128', 'GB'],
+            ['🇺🇸 [MS Azure] Central US (Iowa)', '52.173.18.128', 'US'],
+            ['🇺🇸 [MS Azure] East US (Virginia)', '20.42.73.128', 'US'],
+            ['🇺🇸 [MS Azure] East US 2 (Virginia)', '20.39.81.128', 'US'],
+            ['🇺🇸 [MS Azure] North Central US (Illinois)', '20.49.106.128', 'US'],
+            ['🇺🇸 [MS Azure] South Central US (Texas)', '20.45.18.128', 'US'],
+            ['🇺🇸 [MS Azure] West Central US (Wyoming)', '52.247.213.128', 'US'],
+            ['🇺🇸 [MS Azure] West US (California)', '13.89.204.1', 'US'],
+            ['🇺🇸 [MS Azure] West US 2 (Washington)', '20.46.81.128', 'US'],
+            ['🇺🇸 [MS Azure] West US 3 (Arizona)', '20.150.81.128', 'US'],
+            ['🇺🇸 EE.UU. 2', '143.244.47.65', 'US'],
+            ['🇧🇷 Brasil 2', '177.54.148.163', 'BR'],
+            ['🇬🇧 Reino Unido', '88.215.47.1', 'GB']
+        ];
+        const REGIONS = { off: ['', '', '❌ Desactivado'] };
+        REGION_ENTRIES.forEach((entry, index) => { REGIONS['ip_' + index] = [entry[1], entry[2], entry[0]]; });
+        REGIONS.jp = ['138.199.21.239', 'JP', '🇯🇵 Japón'];
+        REGIONS.us = ['143.244.47.65', 'US', '🇺🇸 Estados Unidos'];
+        REGIONS.kr = ['121.125.60.151', 'KR', '🇰🇷 Corea del Sur'];
+        REGIONS.br = ['169.150.198.66', 'BR', '🇧🇷 Brasil'];
+        REGIONS.pl = ['45.134.212.66', 'PL', '🇵🇱 Polonia'];
+        const SERVERS = {
+            auto: ['', '🤖 Automático'], eau: ['AUSTRALIAEAST', '🇦🇺 Australia Este'],
+            seau: ['AUSTRALIASOUTHEAST', '🇦🇺 Australia Sureste'], brs: ['BRAZILSOUTH', '🇧🇷 Brasil Sur (São Paulo)'],
+            cia: ['CENTRALINDIA', '🇮🇳 India Central'], clc: ['CHILECENTRAL', '🇨🇱 Chile Central (Quilicura)'],
+            eus: ['EASTUS', '🇺🇸 EE.UU. Este (Virginia)'], eus2: ['EASTUS2', '🇺🇸 EE.UU. Este 2'],
+            ejp: ['JAPANEAST', '🇯🇵 Japón Este (Tokio)'], ckr: ['KOREACENTRAL', '🇰🇷 Corea Central (Seúl)'],
+            mxc: ['MEXICOCENTRAL', '🇲🇽 México Central'], ncus: ['NORTHCENTRALUS', '🇺🇸 EE.UU. Centro Norte'],
+            sia: ['SOUTHINDIA', '🇮🇳 India Sur'], scus: ['SOUTHCENTRALUS', '🇺🇸 EE.UU. Centro Sur'],
+            cse: ['SWEDENCENTRAL', '🇸🇪 Suecia Central'], uks: ['UKSOUTH', '🇬🇧 Reino Unido Sur'],
+            weu: ['WESTEUROPE', '🇪🇺 Europa Occidental'], wus: ['WESTUS', '🇺🇸 EE.UU. Oeste'],
+            wus2: ['WESTUS2', '🇺🇸 EE.UU. Oeste 2'], wus3: ['WESTUS3', '🇺🇸 EE.UU. Oeste 3']
+        };
+        const RES = { auto: ['', '🤖 Automático'], r1440: ['windows', '💎 1440p QHD', 'high'], r1080: ['windows', '📺 1080p FHD'], r720: ['android', '📱 720p'] };
         const get = (key, fallback) => { try { return localStorage.getItem(key) || fallback; } catch (_) { return fallback; } };
         const set = (key, value) => { try { localStorage.setItem(key, value); } catch (_) {} };
         const region = () => REGIONS[get(XCU_KEYS.region, 'jp')] || REGIONS.jp;
@@ -1884,7 +1967,7 @@
             const u = urlOf(input), q = resolution();
             if (!u || !isGssv(u.host) || !/\/v5\/sessions\/cloud\/play$/i.test(u.pathname) || !q[0]) return Promise.resolve([input, init]);
             const request = new Request(input instanceof Request ? input : u.href, init);
-            return request.clone().text().then(text => { let body; try { body = JSON.parse(text); } catch (_) { return [input, init]; } if (!body || !body.settings) return [input, init]; body.settings.osName = q[0]; const headers = new Headers(request.headers); headers.delete('content-length'); const info = headers.get('x-ms-device-info'); if (info) { try { const device = JSON.parse(info); if (device.dev && device.dev.os) device.dev.os.name = q[0]; headers.set('x-ms-device-info', JSON.stringify(device)); } catch (_) {} } return [u.href, { method: request.method, headers, body: JSON.stringify(body), mode: request.mode, credentials: request.credentials, cache: request.cache, redirect: request.redirect, referrer: request.referrer, integrity: request.integrity }]; }, () => [input, init]);
+            return request.clone().text().then(text => { let body; try { body = JSON.parse(text); } catch (_) { return [input, init]; } if (!body || !body.settings) return [input, init]; body.settings.osName = q[0]; if (q[2] === 'high') { body.settings.highQuality = true; body.settings.maxVideoBitrate = 50000000; } const headers = new Headers(request.headers); headers.delete('content-length'); const info = headers.get('x-ms-device-info'); if (info) { try { const device = JSON.parse(info); if (device.dev && device.dev.os) device.dev.os.name = q[0]; headers.set('x-ms-device-info', JSON.stringify(device)); } catch (_) {} } return [u.href, { method: request.method, headers, body: JSON.stringify(body), mode: request.mode, credentials: request.credentials, cache: request.cache, redirect: request.redirect, referrer: request.referrer, integrity: request.integrity }]; }, () => [input, init]);
         };
         const rewriteResponse = (response, u) => {
             const r = region(), s = server();
