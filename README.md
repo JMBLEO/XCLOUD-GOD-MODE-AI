@@ -3,7 +3,7 @@
 # 🎮 XCLOUD GOD MODE AI
 ### *El Mega-Script Definitivo para Xbox Cloud Gaming (xCloud) & Xbox Remote Play (XRemote)*
 
-[![Version](https://img.shields.io/badge/Versi%C3%B3n-1.2.1--Ultimate-107C10?style=for-the-badge&logo=xbox&logoColor=white)](https://github.com/JMBLEO/XCLOUD-GOD-MODE-AI)
+[![Version](https://img.shields.io/badge/Versi%C3%B3n-2.0.0--Ultimate-107C10?style=for-the-badge&logo=xbox&logoColor=white)](https://github.com/JMBLEO/XCLOUD-GOD-MODE-AI)
 [![Platform](https://img.shields.io/badge/Plataforma-Web%20%7C%20PC%20%7C%20M%C3%B3vil%20%7C%20SmartTV-0078D4?style=for-the-badge&logo=windows11&logoColor=white)](https://www.xbox.com/play)
 
 <p align="center">
@@ -39,6 +39,7 @@ Diseñado bajo una arquitectura **"Zero Black-Screen"** (Cero Pantallas Negras),
 | Proyecto / Repositorio | Autor / Comunidad | Contribución e Inspiración en este Mega-Script |
 | :--- | :--- | :--- |
 | 🏆 **[Better xCloud](https://github.com/redphx/better-xcloud)** | **@redphx** | La piedra angular absoluta. Base del sistema de intercepción WebRTC/SDP, estadísticas en vivo, parches de controles, soporte Co-Op local, audio booster y mejoras de calidad de vida (QoL). |
+| 🔌 **[Better xCloud - Play Xbox Port](https://github.com/mtsdmsc/Better-xCloud-Play-XBOX)** | **@mtsdmsc** | Port oficial para `play.xbox.com`, integrado en esta edición v2.0.0 para unificar compatibilidad web moderna y controles mejorados. |
 | 📡 **[XStreaming](https://github.com/Geocld/XStreaming)** | **@Geocld** | Referencia fundamental para los protocolos de negociación de transmisión en **xCloud** y **XHome (Remote Play)**, optimización de baja latencia y manejo de sesiones remotas. |
 | 🎮 **XBPlay** | **Studio08** | Inspiración clave para el desbloqueo de parámetros de alta definición (1080p HQ / 1440p), perfilado de servidores *Series X (Anaconda)* y filtros de nitidez en streaming. |
 | ⚡ **XFly Engine** | **Comunidad XFly** | Motor de optimización de *Playout Delay Hint* (`playoutDelayHint = 0`) en los receptores RTP de WebRTC para lograr respuesta instantánea de cuadro. |
@@ -50,7 +51,12 @@ Diseñado bajo una arquitectura **"Zero Black-Screen"** (Cero Pantallas Negras),
 
 ---
 
-## 🚀 Características Principales (v1.2.1)
+## 🚀 Características Principales (v2.0.0)
+
+### 0. 🔌 Integración completa con Better xCloud para `play.xbox.com`
+* Fusiona el port oficial de Desktop de **[Better xCloud](https://github.com/mtsdmsc/Better-xCloud-Play-XBOX)** para `play.xbox.com` con las mejoras adicionales de este proyecto.
+* Conserva compatibilidad con `www.xbox.com/*/play*`, incluidos los hooks de streaming, estadísticas, menú del sistema, WebRTC, mando y renderizado.
+* Mantiene las correcciones regionales y QoS propias de God Mode sin forzar IPv4 ni alterar la negociación nativa del navegador.
 
 ### 0. 🌍 Desbloqueo regional y control de la ruta de streaming
 * Reescribe localmente la respuesta de experimentación para corregir `territory`/`market` y sincroniza la cookie `territory`.
@@ -116,7 +122,7 @@ Hemos separado estrictamente el **Teclado** y el **Ratón** e incorporado el int
 
 1. Instala una extensión gestora de scripts en tu navegador (recomendamos **[Tampermonkey](https://www.tampermonkey.net/)** o **[Violentmonkey](https://violentmonkey.github.io/)** en Chrome, Edge, Brave o Firefox).
 2. Haz clic en el icono de la extensión y selecciona **"Crear un nuevo script..."** (*Create a new script*).
-3. Borra todo el contenido por defecto, copia el código íntegro del script desde este repositorio ([`xcloud-god-mode-ai.user.js`](https://github.com/JMBLEO/XCLOUD-GOD-MODE-AI/releases)) y pégalo.
+3. Borra todo el contenido por defecto, abre [`xcloud-god-mode-ai.user.js`](https://raw.githubusercontent.com/JMBLEO/XCLOUD-GOD-MODE-AI/main/xcloud-god-mode-ai.user.js), copia el código íntegro y pégalo.
 4. Presiona **`Ctrl + S`** (o *Archivo > Guardar*).
 5. Entra a **[xbox.com/play](https://www.xbox.com/play)**. Verás el nuevo botón **⚙️ MJS 🌐 1440p** en la barra superior derecha y el engranaje flotante magnético **⚙️** en el borde izquierdo de tu pantalla.
 
